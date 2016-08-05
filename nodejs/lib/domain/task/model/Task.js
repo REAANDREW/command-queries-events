@@ -1,5 +1,5 @@
 
-var AggregateRoot = require('./AggregateRoot');
+var AggregateRoot = require('../../../core/AggregateRoot');
 
 class TaskAction {
 

@@ -6,7 +6,7 @@ class AggregateRoot {
         this.uncommittedEvents = [];
         this.handlers = {};
         this.aggregate_id = uuid.v4();
-        this.version = uuid.v4();
+        this.version = 0;
     }
 
     handle(name, handler) {
@@ -16,7 +16,9 @@ class AggregateRoot {
     publish(evt, replay) {
         this.handlers[evt.name].call(this, evt);
         if (replay === undefined) {
-            evt.version = uuid.v4();
+            evt.objectId=this.aggregate_id;
+            evt.correlationId=uuid.v4();
+            evt.version = ++this.version;
             this.uncommittedEvents.push(evt);
         }
         this.version = evt.version;

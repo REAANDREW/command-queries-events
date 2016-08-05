@@ -3,9 +3,9 @@ var express = require('express');
 var unirest = require('unirest');
 var bodyParser = require('body-parser');
 
-var Task = require('../lib/Task');
-var TaskRestApi = require('../lib/TaskRestApi');
-var DomainRepository = require('../lib/DomainRepository');
+var Task = require('../lib/domain/task/model/Task');
+var TaskRestApi = require('../lib/domain/task/infra/http/TaskRestApi');
+var DomainRepository = require('../lib/core/DomainRepository');
 
 describe('TaskRestApi', () => {
 

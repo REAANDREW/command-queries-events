@@ -2,7 +2,7 @@ var MessageBus = require('../lib/infra/inproc/MessageBus');
 
 describe('InprocMessageBus', () => {
 
-    it.only('single subscriber', () => {
+    it('single subscriber', () => {
 
         var someEvent = 'someEvent';
         var bus = new MessageBus();

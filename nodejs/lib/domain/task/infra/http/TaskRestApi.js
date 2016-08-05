@@ -4,7 +4,7 @@ var unirest = require('unirest');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 
-var Task = require('../lib/Task');
+var Task = require('../../model/Task');
 
 class TaskRestApi{
 

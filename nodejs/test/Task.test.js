@@ -1,7 +1,7 @@
 require('should');
 
-var DomainRepository = require('../lib/DomainRepository');
-var Task = require('../lib/Task');
+var DomainRepository = require('../lib/core/DomainRepository');
+var Task = require('../lib/domain/task/model/Task');
 
 describe('Task', () => {
 

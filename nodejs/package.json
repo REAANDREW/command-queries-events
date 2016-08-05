@@ -12,6 +12,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^4.14.1",
+    "loki": "0.0.0",
     "node-uuid": "^1.4.7",
     "should": "^10.0.0",
     "unirest": "^0.5.0"
