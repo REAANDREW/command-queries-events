@@ -1,6 +1,7 @@
 require('should');
 
 var DomainRepository = require('../lib/core/DomainRepository');
+var EventStore = require('../lib/infra/inproc/EventStore');
 var Task = require('../lib/domain/task/model/Task');
 
 describe('Task', () => {
@@ -19,7 +20,8 @@ describe('Task', () => {
         task.stop();
         task.start();
 
-        domainRepository = new DomainRepository();
+        var eventStore = new EventStore();
+        var domainRepository = new DomainRepository(eventStore);
 
         domainRepository.register('task', (evts) => {
             return new Task(evts);

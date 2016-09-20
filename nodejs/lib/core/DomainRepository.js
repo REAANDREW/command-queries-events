@@ -1,9 +1,8 @@
-
 class DomainRepository {
 
-    constructor() {
+    constructor(eventStore) {
         this.prototypes = {};
-        this.events = {};
+        this.eventStore = eventStore;
     }
 
     register(collection, prototype) {
@@ -11,34 +10,18 @@ class DomainRepository {
     }
 
     save(collection, aggregateRoot) {
-        if (this.events[collection] === undefined) {
-            this.events[collection] = {};
-        }
-
-        var eventsCollection = this.events[collection][aggregateRoot.id()]
-            if (eventsCollection === undefined) {
-                this.events[collection][aggregateRoot.id()] = [];
-            }
-
         var events = aggregateRoot.events();
-
-
-        events.forEach((evt) => {
-            this.events[collection][aggregateRoot.id()].push(evt);
-        });
-
-
+        this.eventStore.save(collection, aggregateRoot.id(), events);
         aggregateRoot.commit();
     }
 
 
     get(collection, aggregateId) {
-        var eventsForObj = this.events[collection][aggregateId] || [];
-
+        var events = this.eventStore.getEventsForAggregate(collection, aggregateId);
         var prototype = this.prototypes[collection];
 
         var obj = prototype({
-            events: eventsForObj
+            events: events
         });
 
         return obj;

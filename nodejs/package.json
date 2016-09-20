@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^4.14.1",
@@ -16,5 +17,8 @@
     "node-uuid": "^1.4.7",
     "should": "^10.0.0",
     "unirest": "^0.5.0"
+  },
+  "dependencies": {
+    "lokijs": "^1.4.1"
   }
 }

@@ -16,8 +16,8 @@ class AggregateRoot {
     publish(evt, replay) {
         this.handlers[evt.name].call(this, evt);
         if (replay === undefined) {
-            evt.objectId=this.aggregate_id;
-            evt.correlationId=uuid.v4();
+            evt.objectId = this.aggregate_id;
+            evt.correlationId = uuid.v4();
             evt.version = ++this.version;
             this.uncommittedEvents.push(evt);
         }
